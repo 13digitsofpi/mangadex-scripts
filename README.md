@@ -22,6 +22,6 @@ Feel free to send PRs or patches.
 ## TODO / Ideas
 
 * [x] fallows.py
-* [ ] Save info.py output for to json
+* [ ] Save info.py output to json
 * [x] cbt script
 * [ ] Config file

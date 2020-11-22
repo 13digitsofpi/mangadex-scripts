@@ -79,7 +79,7 @@ Creates a .cbt file from a path. Takes the path and then the preferred name. You
 
 **Example Usage**
 
-`/.makecbt.py path/to/thing thing`
+`./makecbt.py path/to/thing thing`
 
 Doesn't output anything.
 
