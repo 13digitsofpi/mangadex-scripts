@@ -1,17 +1,12 @@
 #!/usr/bin/env python3
-import cloudscraper, sys, json, os
+import requests, sys, os
 
 # Language to download
 lang_code = "gb"
 
 def dl(c2d, url, downloads_dir):
-    scraper = cloudscraper.create_scraper()
-    try:
-        r = scraper.get("https://mangadex.org/api/v2/manga/{}/chapters".format(url))
-        manga = json.loads(r.text)
-    except (json.decoder.JSONDecodeError, ValueError) as err:
-        print("CloudFlare error: {}".format(err))
-        exit(1)
+    r = requests.get("https://mangadex.org/api/v2/manga/{}/chapters".format(url))
+    manga = r.json()
     chapters = []
     for chap in manga["data"]["chapters"]:
         if chap["language"] == lang_code:
@@ -24,12 +19,8 @@ def dl(c2d, url, downloads_dir):
         exit(0)
 
     for p in chapters:
-        try:
-            r = scraper.get("https://mangadex.org/api/v2/chapter/{}".format(p))
-            page = json.loads(r.text)
-        except (json.decoder.JSONDecodeError, ValueError) as err:
-            print("CloudFlare error: {}".format(err))
-            exit(1)
+        r = requests.get("https://mangadex.org/api/v2/chapter/{}".format(p))
+        page = r.json()
         images = []
         server = page["data"]["server"]
         hashcode = page["data"]["hash"]
@@ -41,8 +32,8 @@ def dl(c2d, url, downloads_dir):
             output_dir = os.path.join(downloads_dir, str(page["data"]["mangaId"]), page["data"]["chapter"])
             if not os.path.exists(output_dir):
                 os.makedirs(output_dir)
-            outfile = os.path.join(output_dir, str(num))
-            r = scraper.get(l)
+            outfile = os.path.join(output_dir, os.path.basename(l))
+            r = requests.get(l)
             if r.status_code == 200:
                 with open(outfile, 'wb') as f:
                     f.write(r.content)

@@ -10,7 +10,7 @@ More useless documentation can be found in docs.md
 
 Dependencies:
 
-* cloudscraper 
+* requests 
 * python
 
 You can move the scripts you want into your `$PATH`.
