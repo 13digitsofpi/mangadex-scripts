@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import requests, sys
 
+lang_code = 'gb'
 genre = {
     1: "4-Koma",
     2: "Action",
@@ -84,19 +85,28 @@ genre = {
     85: "Villainess"
 }
 
-if len(sys.argv) > 1:
-    url = sys.argv[1]
-else:
-    url = ""
-    while url == "":
-        url = input("Those numbers in the url: ").strip()
-r = requests.get("https://mangadex.org/api/v2/manga/{}/".format(url))
-manga = r.json()
-title = manga["data"]["title"]
-artist = manga["data"]["artist"]
-author = manga["data"]["author"]
-ratings = manga["data"]["rating"]["mean"]
+def GetGenInfo(mid):
+    r = requests.get("https://mangadex.org/api/v2/manga/{}/".format(mid))
+    manga = r.json()
+    title = manga["data"]["title"]
+    artist = manga["data"]["artist"]
+    author = manga["data"]["author"]
+    ratings = manga["data"]["rating"]["mean"]
+    print("{}\nBy {} and {}\nRated: {}".format(title, author, artist, ratings))
+    for tag in manga["data"]["tags"]:
+        print(genre[tag])
 
-print("{}\nBy {} and {}\nRated: {}".format(title, author, artist, ratings))
-for tag in manga["data"]["tags"]:
-    print(genre[tag])
+def ListChapters(mid):
+    r = requests.get("https://mangadex.org/api/v2/manga/{}/chapters".format(mid))
+    chapters = r.json()
+    for chap in chapters["data"]["chapters"]:
+        if chap["language"] == lang_code:
+            print(chap["chapter"], chap["title"])
+
+if __name__ == "__main__":
+    if len(sys.argv) > 2:
+        url = sys.argv[2]
+        if sys.argv[1] == "g":
+            GetGenInfo(url)
+        else:
+            ListChapters(url)
