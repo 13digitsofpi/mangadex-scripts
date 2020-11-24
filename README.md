@@ -1,6 +1,6 @@
 # Scripts for Mangadex
 
-Various scipts for use with mangadex. Uses the v2 [api](https://mangadex.org/api/v2), which may be subject to change.
+Various scripts for use with mangadex. Uses the v2 [api](https://mangadex.org/api/v2), which may be subject to change.
 
 Has a 0BSD license, see LICENSE for more details.
 

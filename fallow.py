@@ -10,16 +10,14 @@ def SearchStatus(status):
 
 def GetProgress(pos):
     # This could probably be done better.
-    finished = []
+    finished = 0
     total = 0
     for p in chapters["fallows"][pos]["chapters"]:
         for c in p:
             if p[c] == "completed":
-                finished.append(c)
-                total += 1
-            else:
-                total += 1
-    return str(len(finished)) + "/" + str(total)
+                finished += 1
+            total += 1
+    return str(finished) + "/" + str(total)
 
 def ChangeStatus(pos, status):
     chapters["fallows"][pos]["status"] = status
