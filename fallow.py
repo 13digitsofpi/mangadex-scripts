@@ -34,7 +34,7 @@ if __name__ == "__main__":
         chapters = json.load(f)
     if len(sys.argv) > 2 and sys.argv[1] == "i":
         Info(int(sys.argv[2]))
-    elif sys.argv[1] == "l":
+    elif len(sys.argv) > 1 and sys.argv[1] == "l":
         SearchStatus(allowed_states)
     elif len(sys.argv) > 2 and sys.argv[1] == "fs":
         if sys.argv[2] in allowed_states:

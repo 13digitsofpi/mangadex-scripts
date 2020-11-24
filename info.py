@@ -106,7 +106,7 @@ def ListChapters(mid):
 if __name__ == "__main__":
     if len(sys.argv) > 2:
         url = sys.argv[2]
-        if sys.argv[1] == "g":
+        if sys.argv[1] == "i":
             GetGenInfo(url)
-        else:
+        elif sys.argv[1] == "c":
             ListChapters(url)
