@@ -1,0 +1,11 @@
+./dl.py id chapter,chapter directory
+./info.py i|c id
+    i - info
+    c - chapters
+./covers.py id
+./fallow.py i|l|fs|cs [pos]
+    i - info pos
+    l - list
+    fs - filter status 
+    cs - change status pos
+./makecbt.py path/to/dir name

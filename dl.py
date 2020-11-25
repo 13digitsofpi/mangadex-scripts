@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 import requests, sys, os
 
-# Language to download
+# Language to download, default english
 lang_code = "gb"
 
 def dl(c2d, url, downloads_dir):
+    # scrape the api
     r = requests.get("https://mangadex.org/api/v2/manga/{}/chapters".format(url))
     manga = r.json()
+    #list all the chapters that have language equal to lang_code 
     chapters = []
     for chap in manga["data"]["chapters"]:
         if chap["language"] == lang_code:
@@ -17,7 +19,7 @@ def dl(c2d, url, downloads_dir):
     if len(chapters) == 0: 
         print("No Chapters (see if you put it in right)")
         exit(0)
-
+    # get the url for the downloading the pages
     for p in chapters:
         r = requests.get("https://mangadex.org/api/v2/chapter/{}".format(p))
         page = r.json()

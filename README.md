@@ -4,7 +4,7 @@ Various scripts for use with mangadex. Uses the v2 [api](https://mangadex.org/ap
 
 Has a 0BSD license, see LICENSE for more details.
 
-More useless documentation can be found in docs.md
+Arguments for scripts can be found in USAGE.
 
 ## Installation
 
@@ -22,6 +22,5 @@ Feel free to send PRs or patches.
 ## TODO / Ideas
 
 * [x] fallows.py
-* [ ] Save info.py output to json
+* [ ] save api json locally to reduce requests made to mangadex
 * [x] cbt script
-* [ ] Config file

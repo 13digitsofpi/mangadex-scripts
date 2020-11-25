@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import requests, sys
 
+# justs lists covers
 if len(sys.argv) > 1:
     url = sys.argv[1]
 else:

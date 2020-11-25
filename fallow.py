@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
 import sys, json
 
+# status allowed as parameter 
 allowed_states = ["completed", "reading", "plan to read", "on hold", "dropped"]
 
+# searches in chapters.json titles that have the status equal to status
 def SearchStatus(status):
     for num,i in enumerate(chapters["fallows"]):
         if i["status"] in status:
             print("{}. {} - {}".format(num, i["title"], i["status"]))
 
+# counts total chapters and chapters marked as completed
 def GetProgress(pos):
-    # This could probably be done better.
     finished = 0
     total = 0
     for p in chapters["fallows"][pos]["chapters"]:
@@ -19,11 +21,13 @@ def GetProgress(pos):
             total += 1
     return str(finished) + "/" + str(total)
 
+# change key value of status to status
 def ChangeStatus(pos, status):
     chapters["fallows"][pos]["status"] = status
     with open('chapters.json', 'w') as f:
         json.dump(chapters, f, indent=2)
 
+# prints information from the previous functions and chapters.json
 def Info(pos):
     print("Title: {}\nStatus: {}\nChapters Completed: {}".format(chapters["fallows"][pos]["title"], chapters["fallows"][pos]["status"], GetProgress(pos)))
 

@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 import requests, sys
 
+# language, default english
 lang_code = 'gb'
+# tad-id returned by mangadex to tag name
 genre = {
     1: "4-Koma",
     2: "Action",
