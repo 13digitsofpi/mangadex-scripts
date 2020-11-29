@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import requests, sys, os
 
+# This script was based of frozenpandaman/mangadex-dl
+
 # Language to download, default english
 lang_code = "gb"
 
@@ -34,7 +36,10 @@ def dl(c2d, url, downloads_dir):
             output_dir = os.path.join(downloads_dir, str(page["data"]["mangaId"]), page["data"]["chapter"])
             if not os.path.exists(output_dir):
                 os.makedirs(output_dir)
-            outfile = os.path.join(output_dir, os.path.basename(l))
+            if num < 10:
+                outfile = os.path.join(output_dir, "00" + str(num) + os.path.splitext(l)[1])
+            elif num > 10 and num < 100:
+                outfile = os.path.join(output_dir, "0" + str(num) + os.path.splitext(l)[1])
             r = requests.get(l)
             if r.status_code == 200:
                 with open(outfile, 'wb') as f:

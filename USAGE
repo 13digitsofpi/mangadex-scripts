@@ -1,4 +1,9 @@
+Main
+----
 ./dl.py id chapter,chapter directory
+
+Info
+----
 ./info.py i|c id
     i - info
     c - chapters
@@ -8,4 +13,7 @@
     l - list
     fs - filter status 
     cs - change status pos
+
+Other
+-----
 ./makecbt.py path/to/dir name

@@ -21,6 +21,9 @@ Feel free to send PRs or patches.
 
 ## TODO / Ideas
 
-* [x] fallows.py
+* [ ] fallows.py
+    * [ ] insert and delete 
 * [ ] save api json locally to reduce requests made to mangadex
+    * [ ] remove useless keys
+    * [ ] ~~compression~~
 * [x] cbt script
