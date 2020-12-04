@@ -19,14 +19,11 @@ def writejson(jsonfile, towrite):
     with open(jsonfile, "w") as f:
         json.dump(data, f, indent=2)
         
-# Checks if date is in a week, if it is return new "don't update" if not, returns old "update"
+# Checks if date is in a week
 def checkdate(jsonfile):
     with open(jsonfile, "r") as f:
         jfile = json.load(f)
-    filedate = jfile["date"]
-    cdate = strftime("%j", gmtime())
-    for d in range(int(filedate), int(filedate) + 7):
-        if d == int(cdate):
-            return "new"
-        else:
-            return "old"
+    filedate = int(jfile["date"])
+    cdate = int(strftime("%j", gmtime()))
+    if cdate in range(filedate, filedate) + 7)):
+        print("old")
